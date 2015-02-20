@@ -10,9 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    // Exemple API Google Maps
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        var camera = GMSCameraPosition.cameraWithLatitude(41.887,
+            longitude:-87.622, zoom:15)
+        var mapView = GMSMapView.mapWithFrame(CGRectZero, camera:camera)
+        
+        var marker = GMSMarker()
+        marker.position = CLLocationCoordinate2DMake(41.887, -87.622)
+        marker.appearAnimation = kGMSMarkerAnimationPop
+        marker.icon = UIImage(named: "flag_icon")
+        marker.map = mapView
+        
+        self.view = mapView
     }
 
     override func didReceiveMemoryWarning() {
